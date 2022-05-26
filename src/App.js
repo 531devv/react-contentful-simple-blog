@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Pages from "./pages/Pages";
 import Nav from "./components/Nav";
 import { BrowserRouter } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Container>
         <Nav />
         <Pages />
+        <Footer />
       </Container>
     </BrowserRouter>
   );
