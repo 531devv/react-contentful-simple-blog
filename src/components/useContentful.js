@@ -14,9 +14,10 @@ const useContentful = () => {
         select: "fields",
       });
 
-      const sanitanizedEntries = entries.items.map((item) => {
+      const sanitanizedEntries = entries.items.map((item, index) => {
         const image = item.fields.mainImage.fields.file.url;
         return {
+          id: index,
           ...item.fields,
           image,
         };

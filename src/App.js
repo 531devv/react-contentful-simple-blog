@@ -1,13 +1,19 @@
-import { useState, useEffect } from "react";
-import useContentful from "./components/useContentful";
+import React from "react";
+import styled from "styled-components";
+import Posts from "./components/Posts";
 
 function App() {
-  const [data, setData] = useState({});
-  const { getPosts } = useContentful();
-  useEffect(() => {
-    getPosts().then((response) => setData(response));
-  }, []);
-  return <div className="App"></div>;
+  return (
+    <Container>
+      <Posts />
+    </Container>
+  );
 }
+
+const Container = styled.div`
+  width: 1000px;
+  max-width: 100%;
+  margin: auto;
+`;
 
 export default App;
