@@ -57,6 +57,7 @@ const Post = styled.div`
   img {
     width: 100%;
     object-fit: contain;
+    border-radius: 1rem;
   }
 `;
 
