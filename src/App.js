@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import Posts from "./components/Posts";
+import Pages from "./pages/Pages";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <Container>
-      <Posts />
-    </Container>
+    <BrowserRouter>
+      <Container>
+        <Pages />
+      </Container>
+    </BrowserRouter>
   );
 }
 

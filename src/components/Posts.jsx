@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useContentful from "./useContentful";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -8,6 +9,7 @@ function Posts() {
 
   useEffect(() => {
     getPosts().then((response) => setPosts(response));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -15,10 +17,15 @@ function Posts() {
       {posts.map((post) => {
         return (
           <Post key={post.id}>
-            <img src={post.image} alt={post.title} />
+            <Link to={`/posts/${post.id}`}>
+              <img src={post.image} alt={post.title} />
+            </Link>
+
             <h2>{post.title}</h2>
             <p>{post.shortDescription}</p>
-            <Button>Dowiedz się więcej</Button>
+            <Link to={`/posts/${post.id}`}>
+              <Button>Dowiedz się więcej</Button>
+            </Link>
           </Post>
         );
       })}
