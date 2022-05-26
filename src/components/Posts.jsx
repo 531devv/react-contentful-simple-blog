@@ -20,7 +20,6 @@ function Posts() {
             <Link to={`/posts/${post.id}`}>
               <img src={post.image} alt={post.title} />
             </Link>
-
             <h2>{post.title}</h2>
             <p>{post.shortDescription}</p>
             <Link to={`/posts/${post.id}`}>
@@ -35,7 +34,6 @@ function Posts() {
 
 const Wrapper = styled.div`
   width: 100%;
-  border: 1px solid black;
 `;
 
 const Post = styled.div`
@@ -43,11 +41,13 @@ const Post = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 2rem 0;
+  margin: 2rem auto;
   text-align: center;
+  width: 600px;
+  max-width: 100%;
 
   h2 {
-    margin: 0.8rem;
+    margin: 0.2rem;
   }
 
   p {
@@ -64,8 +64,16 @@ const Post = styled.div`
 const Button = styled.button`
   padding: 1rem 2rem;
   border: none;
-  background-color: violet;
+  background-color: #a00c85;
+  font-weight: 700;
+  color: white;
   cursor: pointer;
+  transform: scale(0.9);
+
+  &:hover {
+    opacity: 0.9;
+    transition: ease-in-out 0.25s;
+  }
 `;
 
 export default Posts;

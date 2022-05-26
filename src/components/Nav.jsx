@@ -30,10 +30,17 @@ const Logo = styled.div`
   align-items: center;
   color: #282828;
 
+  &:hover {
+    transform: translateY(-2px);
+    transition: ease-in-out 0.1s;
+  }
+
   p {
     padding-left: 0.2rem;
     font-weight: 700;
     font-size: 1.5rem;
+    font-family: "Bebas neue", sans-serif;
+    letter-spacing: 0.2rem;
   }
 
   svg {
