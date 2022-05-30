@@ -12,7 +12,6 @@ function Post() {
   useEffect(() => {
     getPost(params.id).then((response) => setPost(response));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    console.log(post);
   }, [params.id]);
 
   return post.map((item) => {

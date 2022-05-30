@@ -68,11 +68,9 @@ const Button = styled.button`
   font-weight: 700;
   color: white;
   cursor: pointer;
-  transform: scale(0.9);
-
   &:hover {
-    opacity: 0.9;
-    transition: ease-in-out 0.25s;
+    opacity: 0.8;
+    transition: ease-in 0.1s;
   }
 `;
 
