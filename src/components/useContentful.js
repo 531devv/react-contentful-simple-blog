@@ -14,14 +14,13 @@ const useContentful = () => {
         select: "fields",
       });
 
-      const sanitanizedEntries = entries.items.map((item, index) => {
+      const sanitanizedEntries = entries.items.map((item) => {
         const itemCategories = item.fields.category.map((category) => {
           const { fields } = category;
           return { ...fields };
         });
         const image = item.fields.mainImage.fields.file.url;
         return {
-          id: index,
           ...item.fields,
           image,
           categories: itemCategories,
@@ -34,24 +33,28 @@ const useContentful = () => {
     }
   };
 
-  const getPost = async (id) => {
+  const getPost = async (slug) => {
     try {
-      const entries = await client.getEntries({
+      const entry = await client.getEntries({
         content_type: "blogPost",
+        "fields.slug[in]": slug,
         select: "fields",
+        limit: 1,
       });
 
-      const filteredEntries = entries.items.filter((item, index) => {
-        return parseInt(index) === parseInt(id);
-      });
-
-      const sanitanizedEntries = filteredEntries.map((item) => {
+      const sanitanizedEntries = entry.items.map((item) => {
+        const itemCategories = item.fields.category.map((category) => {
+          const { fields } = category;
+          return { ...fields };
+        });
         const image = item.fields.mainImage.fields.file.url;
         return {
           ...item.fields,
           image,
+          categories: itemCategories,
         };
       });
+
       return sanitanizedEntries;
     } catch (error) {
       console.log(`Error fetching authors ${error}`);

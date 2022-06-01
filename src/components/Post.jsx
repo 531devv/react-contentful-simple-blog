@@ -16,7 +16,7 @@ function Post() {
 
   return post.map((item) => {
     return (
-      <Wrapper key={item.title}>
+      <Wrapper key={item.slug}>
         <img src={item.image} alt={item.title} />
         <h1>{item.title}</h1>
         {documentToReactComponents(item.text)}

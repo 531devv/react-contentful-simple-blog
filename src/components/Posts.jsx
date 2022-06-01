@@ -16,13 +16,13 @@ function Posts() {
     <Wrapper>
       {posts.map((post) => {
         return (
-          <Post key={post.id}>
-            <Link to={`/posts/${post.id}`}>
+          <Post key={post.slug}>
+            <Link to={`/posts/${post.slug}`}>
               <img src={post.image} alt={post.title} />
             </Link>
             <h2>{post.title}</h2>
             <p>{post.shortDescription}</p>
-            <Link to={`/posts/${post.id}`}>
+            <Link to={`/posts/${post.slug}`}>
               <Button>Dowiedz się więcej</Button>
             </Link>
           </Post>
