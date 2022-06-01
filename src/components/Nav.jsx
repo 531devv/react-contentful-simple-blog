@@ -10,21 +10,10 @@ function Nav() {
         </Logo>
       </Link>
       <Wrapper>
-        <NavLink
-          to="/category/news"
-          className={({ isActive }) => (isActive ? "active" : "inactive")}
-        >
-          <Category>Aktualności</Category>
-        </NavLink>
-        <NavLink to="/category/fun">
-          <Category>Rozrywka</Category>
-        </NavLink>
-        <NavLink to="/category/curiosities">
-          <Category>Ciekawostki</Category>
-        </NavLink>
-        <NavLink to="/category/tech">
-          <Category>Technologie</Category>
-        </NavLink>
+        <Category to="/category/news">Aktualności</Category>
+        <Category to="/category/fun">Rozrywka</Category>
+        <Category to="/category/curiosities">Ciekawostki</Category>
+        <Category to="/category/tech">Technologie</Category>
       </Wrapper>
     </Navigation>
   );
@@ -77,7 +66,7 @@ const Wrapper = styled.div`
   margin-top: 1rem;
 `;
 
-const Category = styled.div`
+const Category = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,6 +78,10 @@ const Category = styled.div`
   font-size: 0.9rem;
   margin-right: 0.2rem;
   transform: scale(0.8);
+
+  &.active {
+    background-color: black;
+  }
 `;
 
 export default Nav;
