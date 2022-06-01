@@ -79,6 +79,10 @@ const Category = styled(NavLink)`
   margin-right: 0.2rem;
   transform: scale(0.8);
 
+  &:hover {
+    background-color: black;
+  }
+
   &.active {
     background-color: black;
   }
