@@ -33,6 +33,50 @@ const useContentful = () => {
     }
   };
 
+  const getCategoryPosts = async (category) => {
+    try {
+      let categoryEntryId;
+      switch (category) {
+        case "news":
+          categoryEntryId = "4j862J7DfB3OvAkWiWuhyi";
+          break;
+        case "fun":
+          categoryEntryId = "4huGAcCj3uUrwOUZpqL3pX";
+          break;
+        case "curiosities":
+          categoryEntryId = "7dC99Tax55Ptnyg1zhCRXB";
+          break;
+        case "tech":
+          categoryEntryId = "1wCZLJJJFUoJuZ9Xds1g3a";
+          break;
+        default:
+          return "ok";
+      }
+      const entries = await client.getEntries({
+        content_type: "blogPost",
+        select: "fields",
+        "fields.category.sys.id": categoryEntryId,
+      });
+
+      const sanitanizedEntries = entries.items.map((item) => {
+        const itemCategories = item.fields.category.map((category) => {
+          const { fields } = category;
+          return { ...fields };
+        });
+        const image = item.fields.mainImage.fields.file.url;
+        return {
+          ...item.fields,
+          image,
+          categories: itemCategories,
+        };
+      });
+
+      return sanitanizedEntries;
+    } catch (error) {
+      console.log(`Error fetching authors ${error}`);
+    }
+  };
+
   const getPost = async (slug) => {
     try {
       const entry = await client.getEntries({
@@ -61,7 +105,7 @@ const useContentful = () => {
     }
   };
 
-  return { getPosts, getPost };
+  return { getPosts, getPost, getCategoryPosts };
 };
 
 export default useContentful;
