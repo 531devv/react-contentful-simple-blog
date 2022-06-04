@@ -17,10 +17,22 @@ function Posts() {
       {posts.map((post) => {
         return (
           <Post key={post.slug}>
-            <Link to={`/posts/${post.slug}`}>
+            <Thumbnail to={`/posts/${post.slug}`}>
               <img src={post.image} alt={post.title} />
-            </Link>
-            <h2>{post.title}</h2>
+              <Title>{post.title}</Title>
+            </Thumbnail>
+            <CategoryWrapper>
+              {post.categories.map((category) => {
+                return (
+                  <Category
+                    key={post.categoryName}
+                    to={`/category/${category.categoryName}`}
+                  >
+                    {category.categoryTitle}
+                  </Category>
+                );
+              })}
+            </CategoryWrapper>
             <p>{post.shortDescription}</p>
             <Link to={`/posts/${post.slug}`}>
               <Button>Dowiedz się więcej</Button>
@@ -61,14 +73,60 @@ const Post = styled.div`
   }
 `;
 
+const Thumbnail = styled(Link)`
+  position: relative;
+`;
+
+const Title = styled.h2`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  color: white;
+`;
+
 const Button = styled.button`
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.5rem;
   border: none;
   background-color: #a00c85;
   font-weight: 700;
   color: white;
   cursor: pointer;
+  border-radius: 1rem;
   &:hover {
+    background-color: black;
+  }
+`;
+
+const CategoryWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.4rem;
+`;
+
+const Category = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background-color: #a00c85;
+  color: white;
+  font-size: 0.9rem;
+  margin-right: 0.2rem;
+  transform: scale(0.8);
+
+  &:hover {
+    background-color: black;
+  }
+
+  &.active {
     background-color: black;
   }
 `;
