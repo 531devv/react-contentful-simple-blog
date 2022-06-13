@@ -24,6 +24,14 @@ function FeaturedPosts() {
           pagination: false,
           drag: "free",
           gap: "3rem",
+          breakpoints: {
+            1024: {
+              perPage: 2,
+            },
+            640: {
+              perPage: 1,
+            },
+          },
         }}
       >
         {posts.map((item) => {
