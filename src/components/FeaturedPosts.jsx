@@ -20,12 +20,10 @@ function FeaturedPosts() {
       <Splide
         options={{
           type: "loop",
-          autoplay: true,
           perPage: 3,
           pagination: false,
           drag: "free",
           gap: "3rem",
-          pauseOnHover: false,
         }}
       >
         {posts.map((item) => {
