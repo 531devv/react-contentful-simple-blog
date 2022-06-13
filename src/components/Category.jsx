@@ -10,6 +10,7 @@ function Category() {
 
   useEffect(() => {
     getCategoryPosts(slug).then((response) => setPosts(response));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   return (

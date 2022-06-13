@@ -50,7 +50,7 @@ const useContentful = () => {
           categoryEntryId = "1wCZLJJJFUoJuZ9Xds1g3a";
           break;
         default:
-          return "ok";
+          return "error";
       }
       const entries = await client.getEntries({
         content_type: "blogPost",
@@ -105,7 +105,35 @@ const useContentful = () => {
     }
   };
 
-  return { getPosts, getPost, getCategoryPosts };
+  const getFeaturedPosts = async () => {
+    try {
+      const entry = await client.getEntries({
+        content_type: "blogPost",
+        select: "fields",
+        "fields.isFeatured": true,
+        limit: 5,
+      });
+
+      const sanitanizedEntries = entry.items.map((item) => {
+        const itemCategories = item.fields.category.map((category) => {
+          const { fields } = category;
+          return { ...fields };
+        });
+        const image = item.fields.mainImage.fields.file.url;
+        return {
+          ...item.fields,
+          image,
+          categories: itemCategories,
+        };
+      });
+
+      return sanitanizedEntries;
+    } catch (error) {
+      console.log(`Error fetching authors ${error}`);
+    }
+  };
+
+  return { getPosts, getPost, getCategoryPosts, getFeaturedPosts };
 };
 
 export default useContentful;

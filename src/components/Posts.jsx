@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useId } from "react";
 import useContentful from "./useContentful";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 function Posts() {
   const [posts, setPosts] = useState([]);
   const { getPosts } = useContentful();
+  const id = useId();
 
   useEffect(() => {
     getPosts().then((response) => setPosts(response));
@@ -16,16 +17,16 @@ function Posts() {
     <Wrapper>
       {posts.map((post) => {
         return (
-          <Post key={post.slug}>
+          <Post key={`${id}+${post.title}`}>
             <Thumbnail to={`/posts/${post.slug}`}>
               <img src={post.image} alt={post.title} />
               <Title>{post.title}</Title>
             </Thumbnail>
             <CategoryWrapper>
-              {post.categories.map((category) => {
+              {post.categories.map((category, index) => {
                 return (
                   <Category
-                    key={post.categoryName}
+                    key={`${id}+${index}`}
                     to={`/category/${category.categoryName}`}
                   >
                     {category.categoryTitle}
@@ -53,7 +54,7 @@ const Post = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 2rem auto;
+  margin: 3rem auto;
   text-align: center;
   width: 600px;
   max-width: 100%;
@@ -94,7 +95,6 @@ const Button = styled.button`
   font-weight: 700;
   color: white;
   cursor: pointer;
-  border-radius: 1rem;
   &:hover {
     background-color: black;
   }
