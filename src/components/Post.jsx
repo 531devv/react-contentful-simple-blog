@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import useContentful from "./useContentful";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import ThemeContext from "../Context/ThemeContext";
 
 function Post() {
   const [post, setPost] = useState([]);
   const { getPost } = useContentful();
   let params = useParams();
+  const { theme, isDarkMode } = useContext(ThemeContext);
 
   useEffect(() => {
     getPost(params.id).then((response) => setPost(response));
@@ -16,7 +18,10 @@ function Post() {
 
   return post.map((item) => {
     return (
-      <Wrapper key={item.slug}>
+      <Wrapper
+        key={item.slug}
+        theme={isDarkMode ? theme.darkMode : theme.lightMode}
+      >
         <img src={item.image} alt={item.title} />
         <h1>{item.title}</h1>
         {documentToReactComponents(item.text)}
@@ -32,7 +37,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: auto;
-
+  color: ${({ theme }) => theme.fontColor};
   img {
     width: 100%;
     max-width: 800px;

@@ -1,15 +1,25 @@
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { GiPencilRuler } from "react-icons/gi";
-function Nav() {
+import { useContext } from "react";
+import ThemeContext from "../Context/ThemeContext";
+function Nav(props) {
+  const { theme, isDarkMode } = useContext(ThemeContext);
+  const handleClick = () => {
+    props.setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <Navigation>
+    <Navigation theme={isDarkMode ? theme.darkMode : theme.lightMode}>
+      <ToggleTheme onClick={handleClick}>
+        {isDarkMode ? "Enable Dark Mode" : "Enable Light Mode"}
+      </ToggleTheme>
       <Link to={"/"}>
-        <Logo>
+        <Logo theme={isDarkMode ? theme.darkMode : theme.lightMode}>
           <GiPencilRuler /> <p>DevBlog</p>
         </Logo>
       </Link>
-      <Wrapper>
+      <Wrapper theme={isDarkMode ? theme.darkMode : theme.lightMode}>
         <Category to="/category/news">Aktualności</Category>
         <Category to="/category/fun">Rozrywka</Category>
         <Category to="/category/curiosities">Ciekawostki</Category>
@@ -27,7 +37,7 @@ const Navigation = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: white;
+  background-color: ${({ theme }) => theme.backgroundColor};
   padding: 1rem 0;
   z-index: 1090;
 `;
@@ -36,7 +46,7 @@ const Logo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #282828;
+  color: ${({ theme }) => theme.logoColor};
 
   &:hover {
     transform: translateY(-2px);
@@ -52,7 +62,7 @@ const Logo = styled.div`
   }
 
   svg {
-    color: #a00c85;
+    color: ${({ theme }) => theme.logoIconColor};
     height: 25px;
     width: 25px;
   }
@@ -64,6 +74,18 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: row;
   margin-top: 1rem;
+
+  a {
+    &:hover {
+      background-color: ${({ theme }) => theme.buttonHoverColor};
+      color: ${({ theme }) => theme.buttonHoverFontColor};
+    }
+
+    &.active {
+      background-color: ${({ theme }) => theme.buttonHoverColor};
+      color: ${({ theme }) => theme.buttonHoverFontColor};
+    }
+  }
 `;
 
 const Category = styled(NavLink)`
@@ -78,14 +100,17 @@ const Category = styled(NavLink)`
   font-size: 0.9rem;
   margin-right: 0.2rem;
   transform: scale(0.8);
+`;
 
-  &:hover {
-    background-color: black;
-  }
-
-  &.active {
-    background-color: black;
-  }
+const ToggleTheme = styled.button`
+  position: absolute;
+  right: 0;
+  top: 0.4rem;
+  background-color: black;
+  color: white;
+  border-radius: 1rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
 `;
 
 export default Nav;

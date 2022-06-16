@@ -1,12 +1,14 @@
-import { useState, useEffect, useId } from "react";
+import { useState, useEffect, useId, useContext } from "react";
 import useContentful from "./useContentful";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import ThemeContext from "../Context/ThemeContext";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
   const { getPosts } = useContentful();
   const id = useId();
+  const { theme, isDarkMode } = useContext(ThemeContext);
 
   useEffect(() => {
     getPosts().then((response) => setPosts(response));
@@ -22,7 +24,9 @@ function Posts() {
               <img src={post.image} alt={post.title} />
               <Title>{post.title}</Title>
             </Thumbnail>
-            <CategoryWrapper>
+            <CategoryWrapper
+              theme={isDarkMode ? theme.darkMode : theme.lightMode}
+            >
               {post.categories.map((category, index) => {
                 return (
                   <Category
@@ -36,7 +40,9 @@ function Posts() {
             </CategoryWrapper>
             <p>{post.shortDescription}</p>
             <Link to={`/posts/${post.slug}`}>
-              <Button>Dowiedz się więcej</Button>
+              <Button theme={isDarkMode ? theme.darkMode : theme.lightMode}>
+                Dowiedz się więcej
+              </Button>
             </Link>
           </Post>
         );
@@ -96,7 +102,8 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
   &:hover {
-    background-color: black;
+    background-color: ${({ theme }) => theme.buttonHoverColor};
+    color: ${({ theme }) => theme.buttonHoverFontColor};
   }
 `;
 
@@ -107,6 +114,18 @@ const CategoryWrapper = styled.div`
   flex-direction: row;
   width: 100%;
   padding: 0.4rem;
+
+  a {
+    &:hover {
+      background-color: ${({ theme }) => theme.buttonHoverColor};
+      color: ${({ theme }) => theme.buttonHoverFontColor};
+    }
+
+    &.active {
+      background-color: ${({ theme }) => theme.buttonHoverColor};
+      color: ${({ theme }) => theme.buttonHoverFontColor};
+    }
+  }
 `;
 
 const Category = styled(Link)`
@@ -121,14 +140,6 @@ const Category = styled(Link)`
   font-size: 0.9rem;
   margin-right: 0.2rem;
   transform: scale(0.8);
-
-  &:hover {
-    background-color: black;
-  }
-
-  &.active {
-    background-color: black;
-  }
 `;
 
 export default Posts;

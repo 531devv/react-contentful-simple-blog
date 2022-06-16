@@ -36,8 +36,8 @@ function FeaturedPosts() {
       >
         {posts.map((item) => {
           return (
-            <SplideSlide>
-              <StyleLink to={`/posts/${item.slug}`} key={`${id}+${item.title}`}>
+            <SplideSlide key={`${id}+${item.title}`}>
+              <StyleLink to={`/posts/${item.slug}`}>
                 <img src={item.image} alt={item.title} />
                 <h3>{item.title}</h3>
               </StyleLink>
