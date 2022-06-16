@@ -1,5 +1,5 @@
 export const theme = {
-  isDefaultDarkMode: false,
+  isDefaultDarkMode: true,
   lightMode: {
     fontColor: "#000000",
     backgroundColor: "#ffffff",
