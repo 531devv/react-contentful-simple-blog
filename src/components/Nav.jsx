@@ -12,7 +12,7 @@ function Nav(props) {
   return (
     <Navigation theme={isDarkMode ? theme.darkMode : theme.lightMode}>
       <ToggleTheme onClick={handleClick}>
-        {isDarkMode ? "Enable Dark Mode" : "Enable Light Mode"}
+        {isDarkMode ? "Enable Light Mode" : "Enable Dark Mode"}
       </ToggleTheme>
       <Link to={"/"}>
         <Logo theme={isDarkMode ? theme.darkMode : theme.lightMode}>
