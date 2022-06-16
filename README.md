@@ -1,4 +1,5 @@
 # react-contentful-simple-blog
+Simple blog using react and contentful.
 
 ## I use for this project:
 - React
