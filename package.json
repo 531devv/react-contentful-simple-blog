@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://531devv.github.io/",
+  "homepage": "https://531devv.github.io/react-contentful-simple-blog/",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.12.1",
     "@splidejs/react-splide": "^0.7.5",
