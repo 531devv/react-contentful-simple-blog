@@ -1,7 +1,7 @@
 # react-contentful-simple-blog
 Simple blog using react and contentful.
 
-## I use for this project:
+## I used for this project:
 - React
 - Headless CMS Contentful
 - react-router-dom
