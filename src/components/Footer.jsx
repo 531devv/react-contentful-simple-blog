@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { RiHeartFill } from "react-icons/ri";
-import ThemeContext from "../Context/ThemeContext";
+import ThemeContext from "../context/ThemeContext";
 import { useContext } from "react";
 
 function Footer() {

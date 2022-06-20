@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import useContentful from "./useContentful";
+import useContentful from "../hooks/useContentful";
 import { Link, useParams } from "react-router-dom";
 
 function Category() {

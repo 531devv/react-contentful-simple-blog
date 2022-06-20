@@ -1,8 +1,8 @@
 import { useState, useEffect, useId, useContext } from "react";
-import useContentful from "./useContentful";
+import useContentful from "../hooks/useContentful";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import ThemeContext from "../Context/ThemeContext";
+import ThemeContext from "../context/ThemeContext";
 
 function Posts() {
   const [posts, setPosts] = useState([]);

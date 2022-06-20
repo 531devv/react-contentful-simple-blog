@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { GiPencilRuler } from "react-icons/gi";
 import { useContext } from "react";
-import ThemeContext from "../Context/ThemeContext";
+import ThemeContext from "../context/ThemeContext";
 function Nav(props) {
   const { theme, isDarkMode } = useContext(ThemeContext);
   const handleClick = () => {

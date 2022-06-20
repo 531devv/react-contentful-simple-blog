@@ -4,8 +4,8 @@ import Pages from "./pages/Pages";
 import Nav from "./components/Nav";
 import { BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer";
-import ThemeContext from "./Context/ThemeContext";
-import { theme } from "./Utils/Theme";
+import ThemeContext from "./context/ThemeContext";
+import { theme } from "./utils/Theme";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(theme.isDefaultDarkMode);

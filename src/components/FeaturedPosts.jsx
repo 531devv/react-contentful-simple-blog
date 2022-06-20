@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useId } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import useContentful from "./useContentful";
+import useContentful from "../hooks/useContentful";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 

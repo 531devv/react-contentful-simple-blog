@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import useContentful from "./useContentful";
+import useContentful from "../hooks/useContentful";
 import { useState, useEffect, useContext } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import ThemeContext from "../Context/ThemeContext";
+import ThemeContext from "../context/ThemeContext";
 
 function Post() {
   const [post, setPost] = useState([]);
