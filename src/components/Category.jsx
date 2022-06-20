@@ -13,22 +13,24 @@ function Category() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
+  const categoryPosts = posts.map((post, index) => {
+    return (
+      <Post key={post.slug + index}>
+        <Link to={`/posts/${post.slug}`}>
+          <img src={post.image} alt={post.title} />
+        </Link>
+        <h2>{post.title}</h2>
+        <p>{post.shortDescription}</p>
+        <Link to={`/posts/${post.slug}`}>
+          <Button>Dowiedz się więcej</Button>
+        </Link>
+      </Post>
+    );
+  });
+
   return (
     <Wrapper>
-      {posts.map((post) => {
-        return (
-          <Post key={post.slug}>
-            <Link to={`/posts/${post.slug}`}>
-              <img src={post.image} alt={post.title} />
-            </Link>
-            <h2>{post.title}</h2>
-            <p>{post.shortDescription}</p>
-            <Link to={`/posts/${post.slug}`}>
-              <Button>Dowiedz się więcej</Button>
-            </Link>
-          </Post>
-        );
-      })}
+      {categoryPosts.length > 0 ? categoryPosts : <Text>Brak postów</Text>}
     </Wrapper>
   );
 }
@@ -72,6 +74,12 @@ const Button = styled.button`
   &:hover {
     background-color: black;
   }
+`;
+
+const Text = styled.p`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export default Category;
