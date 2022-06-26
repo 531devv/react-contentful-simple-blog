@@ -69,6 +69,12 @@ const Post = styled.div`
   padding: 3rem;
   margin: 6rem auto;
 
+  @media (max-width: 600px) {
+    padding: 2rem 0.5rem;
+    text-align: center;
+    margin: 0 auto;
+  }
+
   h2 {
     margin-top: 1.2rem;
     margin-bottom: 0.5rem;

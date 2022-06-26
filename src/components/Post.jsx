@@ -45,6 +45,13 @@ const Wrapper = styled.div`
   color: ${({ theme }) => theme.fontColor};
   max-width: 1000px;
   width: 100%;
+
+  @media (max-width: 600px) {
+    padding: 2rem 0.5rem;
+    text-align: center;
+    margin: 0 auto;
+  }
+
   img {
     width: 100%;
     max-width: 800px;

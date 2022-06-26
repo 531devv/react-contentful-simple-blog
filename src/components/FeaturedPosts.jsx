@@ -69,6 +69,13 @@ const Wrapper = styled.div`
   border-radius: 1rem;
   box-shadow: ${({ theme }) => theme.boxShadow};
 
+  @media (max-width: 600px) {
+    padding: 0 0.5rem;
+    background-color: unset;
+    box-shadow: none;
+    margin: 0 auto;
+  }
+
   h2 {
     display: flex;
     width: 100%;
@@ -97,6 +104,13 @@ const Image = styled.img`
   width: 100%;
   object-fit: contain;
   border-radius: 1rem;
+  @media (max-width: 600px) {
+    width: 93%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
 `;
 
 export default FeaturedPosts;

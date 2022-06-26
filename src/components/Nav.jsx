@@ -51,6 +51,9 @@ const Navigation = styled.nav`
   background-color: ${({ theme }) => theme.backgroundColor};
   padding: 1rem 0;
   z-index: 1090;
+  @media (max-width: 600px) {
+    padding-top: 2.5rem;
+  }
 `;
 
 const Logo = styled.div`
@@ -85,6 +88,11 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: row;
   margin-top: 1rem;
+
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
 
   a {
     background-color: ${({ theme }) => theme.buttonColor};
