@@ -73,7 +73,7 @@ const Post = styled.div`
   max-width: 100%;
   box-shadow: ${({ theme }) => theme.boxShadow};
   border-radius: 1rem;
-  padding: 4rem 2rem;
+  padding: 3rem;
   h2 {
     margin: 0.2rem;
   }
