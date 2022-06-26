@@ -71,7 +71,7 @@ const Post = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 6rem auto;
+  margin: 4rem auto;
   text-align: center;
   width: 800px;
   max-width: 100%;
