@@ -64,7 +64,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   margin: 2rem auto;
   width: 80%;
-  max-width: 14000px;
+  max-width: 1400px;
   padding: 0.2rem 2rem 4rem 2rem;
   border-radius: 1rem;
   box-shadow: ${({ theme }) => theme.boxShadow};
