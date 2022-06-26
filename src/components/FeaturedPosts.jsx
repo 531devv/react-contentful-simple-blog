@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useId } from "react";
+import React, { useState, useEffect, useId, useContext } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import useContentful from "../hooks/useContentful";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import ThemeContext from "../context/ThemeContext";
 
 function FeaturedPosts() {
   const [posts, setPosts] = useState([]);
   const { getFeaturedPosts } = useContentful();
   const id = useId();
+  const { theme, isDarkMode } = useContext(ThemeContext);
 
   useEffect(() => {
     getFeaturedPosts().then((response) => setPosts(response));
@@ -38,7 +40,11 @@ function FeaturedPosts() {
           return (
             <SplideSlide key={`${id}+${item.title}`}>
               <StyleLink to={`/posts/${item.slug}`}>
-                <img src={item.image} alt={item.title} />
+                <Image
+                  theme={isDarkMode ? theme.darkMode : theme.lightMode}
+                  src={item.image}
+                  alt={item.title}
+                />
                 <h3>{item.title}</h3>
               </StyleLink>
             </SplideSlide>
@@ -50,7 +56,9 @@ function FeaturedPosts() {
 }
 
 const Wrapper = styled.div`
-  margin: 1rem 0;
+  margin: 1rem auto;
+  width: 80%;
+  max-width: 14000px;
 
   h2 {
     display: flex;
@@ -69,16 +77,17 @@ const Wrapper = styled.div`
     width: 100%;
     color: white;
   }
-
-  img {
-    width: 100%;
-    object-fit: contain;
-    border-radius: 1rem;
-  }
 `;
 
 const StyleLink = styled(Link)`
   position: relative;
+`;
+
+const Image = styled.img`
+  box-shadow: ${({ theme }) => theme.postBoxShadow};
+  width: 100%;
+  object-fit: contain;
+  border-radius: 1rem;
 `;
 
 export default FeaturedPosts;

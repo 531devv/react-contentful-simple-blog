@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import useContentful from "../hooks/useContentful";
 import { Link, useParams } from "react-router-dom";
+import ThemeContext from "../context/ThemeContext";
 
 function Category() {
   const [posts, setPosts] = useState([]);
   let { slug } = useParams();
   const { getCategoryPosts } = useContentful();
+  const { theme, isDarkMode } = useContext(ThemeContext);
 
   useEffect(() => {
     getCategoryPosts(slug).then((response) => setPosts(response));
@@ -22,7 +24,9 @@ function Category() {
         <h2>{post.title}</h2>
         <p>{post.shortDescription}</p>
         <Link to={`/posts/${post.slug}`}>
-          <Button>Dowiedz się więcej</Button>
+          <Button theme={isDarkMode ? theme.darkMode : theme.lightMode}>
+            Dowiedz się więcej
+          </Button>
         </Link>
       </Post>
     );
@@ -71,8 +75,11 @@ const Button = styled.button`
   font-weight: 700;
   color: white;
   cursor: pointer;
+  background-color: ${({ theme }) => theme.buttonColor};
+  color: ${({ theme }) => theme.buttonFontColor};
   &:hover {
-    background-color: black;
+    background-color: ${({ theme }) => theme.buttonHoverColor};
+    color: ${({ theme }) => theme.buttonHoverFontColor};
   }
 `;
 

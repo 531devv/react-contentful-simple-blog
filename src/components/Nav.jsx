@@ -11,7 +11,10 @@ function Nav(props) {
 
   return (
     <Navigation theme={isDarkMode ? theme.darkMode : theme.lightMode}>
-      <ToggleTheme onClick={handleClick}>
+      <ToggleTheme
+        onClick={handleClick}
+        theme={isDarkMode ? theme.darkMode : theme.lightMode}
+      >
         {isDarkMode ? "Enable Light Mode" : "Enable Dark Mode"}
       </ToggleTheme>
       <Link to={"/"}>
@@ -34,8 +37,6 @@ const Navigation = styled.nav`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: sticky;
-  top: 0;
   width: 100%;
   background-color: ${({ theme }) => theme.backgroundColor};
   padding: 1rem 0;
@@ -76,6 +77,9 @@ const Wrapper = styled.div`
   margin-top: 1rem;
 
   a {
+    background-color: ${({ theme }) => theme.buttonColor};
+    color: ${({ theme }) => theme.buttonFontColor};
+
     &:hover {
       background-color: ${({ theme }) => theme.buttonHoverColor};
       color: ${({ theme }) => theme.buttonHoverFontColor};
@@ -95,8 +99,6 @@ const Category = styled(NavLink)`
   width: 7rem;
   height: 2rem;
   border-radius: 1rem;
-  background-color: #a00c85;
-  color: white;
   font-size: 0.9rem;
   margin-right: 0.2rem;
   transform: scale(0.8);
@@ -106,8 +108,9 @@ const ToggleTheme = styled.button`
   position: absolute;
   right: 0;
   top: 0.4rem;
-  background-color: black;
-  color: white;
+  background-color: transparent;
+  color: ${({ theme }) => theme.footerLinkColor};
+  border: none;
   border-radius: 1rem;
   padding: 0.4rem 1rem;
   cursor: pointer;

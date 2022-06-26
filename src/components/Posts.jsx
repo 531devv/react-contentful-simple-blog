@@ -19,9 +19,16 @@ function Posts() {
     <Wrapper>
       {posts.map((post) => {
         return (
-          <Post key={`${id}+${post.title}`}>
+          <Post
+            theme={isDarkMode ? theme.darkMode : theme.lightMode}
+            key={`${id}+${post.title}`}
+          >
             <Thumbnail to={`/posts/${post.slug}`}>
-              <img src={post.image} alt={post.title} />
+              <Image
+                theme={isDarkMode ? theme.darkMode : theme.lightMode}
+                src={post.image}
+                alt={post.title}
+              />
               <Title>{post.title}</Title>
             </Thumbnail>
             <CategoryWrapper
@@ -60,11 +67,13 @@ const Post = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 3rem auto;
+  margin: 6rem auto;
   text-align: center;
-  width: 600px;
+  width: 800px;
   max-width: 100%;
-
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  border-radius: 1rem;
+  padding: 4rem 2rem;
   h2 {
     margin: 0.2rem;
   }
@@ -101,6 +110,9 @@ const Button = styled.button`
   font-weight: 700;
   color: white;
   cursor: pointer;
+  margin-top: 0.5rem;
+  background-color: ${({ theme }) => theme.buttonColor};
+  color: ${({ theme }) => theme.buttonFontColor};
   &:hover {
     background-color: ${({ theme }) => theme.buttonHoverColor};
     color: ${({ theme }) => theme.buttonHoverFontColor};
@@ -114,8 +126,12 @@ const CategoryWrapper = styled.div`
   flex-direction: row;
   width: 100%;
   padding: 0.4rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
 
   a {
+    background-color: ${({ theme }) => theme.buttonColor};
+    color: ${({ theme }) => theme.buttonFontColor};
     &:hover {
       background-color: ${({ theme }) => theme.buttonHoverColor};
       color: ${({ theme }) => theme.buttonHoverFontColor};
@@ -140,6 +156,10 @@ const Category = styled(Link)`
   font-size: 0.9rem;
   margin-right: 0.2rem;
   transform: scale(0.8);
+`;
+
+const Image = styled.img`
+  box-shadow: ${({ theme }) => theme.postBoxShadow};
 `;
 
 export default Posts;

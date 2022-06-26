@@ -37,11 +37,19 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: auto;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  padding: 4rem;
+  border: none;
+  box-shadow: ${({ theme }) => theme.boxShadow};
   color: ${({ theme }) => theme.fontColor};
+  max-width: 1000px;
+  width: 100%;
   img {
     width: 100%;
     max-width: 800px;
     object-fit: contain;
+    border-radius: 1rem;
   }
 
   h1 {

@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { theme } from "../utils/Theme";
+import { theme } from "../style/Theme";
 
 const ThemeContext = createContext(theme);
 
