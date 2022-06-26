@@ -17,7 +17,7 @@ function FeaturedPosts() {
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper theme={isDarkMode ? theme.darkMode : theme.lightMode}>
       <h2>Polecane artykuły:</h2>
       <Splide
         options={{
@@ -56,16 +56,23 @@ function FeaturedPosts() {
 }
 
 const Wrapper = styled.div`
-  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2rem auto;
   width: 80%;
   max-width: 14000px;
+  padding: 0.2rem 2rem 4rem 2rem;
+  border-radius: 1rem;
+  box-shadow: ${({ theme }) => theme.boxShadow};
 
   h2 {
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin: 0.5rem;
+    margin: 1rem;
   }
 
   h3 {
