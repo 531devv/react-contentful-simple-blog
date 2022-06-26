@@ -6,9 +6,18 @@ import Category from "../components/Category";
 function Pages() {
   return (
     <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/posts/:id" element={<Post />} />
-      <Route path="/category/:slug" element={<Category />} />
+      <Route
+        path={`${process.env.REACT_APP_PRODUCTION_DIR}/`}
+        element={<Homepage />}
+      />
+      <Route
+        path={`${process.env.REACT_APP_PRODUCTION_DIR}/posts/:id`}
+        element={<Post />}
+      />
+      <Route
+        path={`${process.env.REACT_APP_PRODUCTION_DIR}/category/:slug`}
+        element={<Category />}
+      />
     </Routes>
   );
 }

@@ -21,7 +21,7 @@ function Category() {
         theme={isDarkMode ? theme.darkMode : theme.lightMode}
         key={post.slug + index}
       >
-        <Link to={`/posts/${post.slug}`}>
+        <Link to={`${process.env.REACT_APP_PRODUCTION_DIR}/posts/${post.slug}`}>
           <Image
             theme={isDarkMode ? theme.darkMode : theme.lightMode}
             src={post.image}
@@ -30,7 +30,7 @@ function Category() {
         </Link>
         <h2>{post.title}</h2>
         <p>{post.shortDescription}</p>
-        <Link to={`/posts/${post.slug}`}>
+        <Link to={`${process.env.REACT_APP_PRODUCTION_DIR}/posts/${post.slug}`}>
           <Button theme={isDarkMode ? theme.darkMode : theme.lightMode}>
             Dowiedz się więcej
           </Button>

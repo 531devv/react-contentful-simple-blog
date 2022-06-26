@@ -39,7 +39,9 @@ function FeaturedPosts() {
         {posts.map((item) => {
           return (
             <SplideSlide key={`${id}+${item.title}`}>
-              <StyleLink to={`/posts/${item.slug}`}>
+              <StyleLink
+                to={`${process.env.REACT_APP_PRODUCTION_DIR}/posts/${item.slug}`}
+              >
                 <Image
                   theme={isDarkMode ? theme.darkMode : theme.lightMode}
                   src={item.image}

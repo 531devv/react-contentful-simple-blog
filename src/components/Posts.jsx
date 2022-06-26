@@ -23,7 +23,9 @@ function Posts() {
             theme={isDarkMode ? theme.darkMode : theme.lightMode}
             key={`${id}+${post.title}`}
           >
-            <Thumbnail to={`/posts/${post.slug}`}>
+            <Thumbnail
+              to={`${process.env.REACT_APP_PRODUCTION_DIR}/posts/${post.slug}`}
+            >
               <Image
                 theme={isDarkMode ? theme.darkMode : theme.lightMode}
                 src={post.image}
@@ -38,7 +40,7 @@ function Posts() {
                 return (
                   <Category
                     key={`${id}+${index}`}
-                    to={`/category/${category.categoryName}`}
+                    to={`${process.env.REACT_APP_PRODUCTION_DIR}/category/${category.categoryName}`}
                   >
                     {category.categoryTitle}
                   </Category>
@@ -46,7 +48,9 @@ function Posts() {
               })}
             </CategoryWrapper>
             <p>{post.shortDescription}</p>
-            <Link to={`/posts/${post.slug}`}>
+            <Link
+              to={`${process.env.REACT_APP_PRODUCTION_DIR}/posts/${post.slug}`}
+            >
               <Button theme={isDarkMode ? theme.darkMode : theme.lightMode}>
                 Dowiedz się więcej
               </Button>

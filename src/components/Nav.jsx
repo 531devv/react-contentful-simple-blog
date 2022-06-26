@@ -17,16 +17,26 @@ function Nav(props) {
       >
         {isDarkMode ? "Enable Light Mode" : "Enable Dark Mode"}
       </ToggleTheme>
-      <Link to={"/"}>
+      <Link to={`${process.env.REACT_APP_PRODUCTION_DIR}/`}>
         <Logo theme={isDarkMode ? theme.darkMode : theme.lightMode}>
           <GiPencilRuler /> <p>DevBlog</p>
         </Logo>
       </Link>
       <Wrapper theme={isDarkMode ? theme.darkMode : theme.lightMode}>
-        <Category to="/category/news">Aktualności</Category>
-        <Category to="/category/fun">Rozrywka</Category>
-        <Category to="/category/curiosities">Ciekawostki</Category>
-        <Category to="/category/tech">Technologie</Category>
+        <Category to={`${process.env.REACT_APP_PRODUCTION_DIR}/category/news`}>
+          Aktualności
+        </Category>
+        <Category to={`${process.env.REACT_APP_PRODUCTION_DIR}/category/fun`}>
+          Rozrywka
+        </Category>
+        <Category
+          to={`${process.env.REACT_APP_PRODUCTION_DIR}/category/curiosities`}
+        >
+          Ciekawostki
+        </Category>
+        <Category to={`${process.env.REACT_APP_PRODUCTION_DIR}/category/tech`}>
+          Technologie
+        </Category>
       </Wrapper>
     </Navigation>
   );
