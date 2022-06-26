@@ -41,13 +41,19 @@ function Category() {
 
   return (
     <Wrapper>
-      {categoryPosts.length > 0 ? categoryPosts : <Text>Brak postów</Text>}
+      {categoryPosts.length > 0 ? (
+        categoryPosts
+      ) : (
+        <Text>Brak postów w tej kategorii</Text>
+      )}
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
+  min-height: 80vh;
 `;
 
 const Post = styled.div`
@@ -99,6 +105,8 @@ const Text = styled.p`
   width: 100%;
   display: flex;
   justify-content: center;
+  height: 100%;
+  padding: 5rem 0;
 `;
 
 const Image = styled.img`
