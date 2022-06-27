@@ -21,11 +21,13 @@ function FeaturedPosts() {
       <h2>Polecane artykuły:</h2>
       <Splide
         options={{
-          type: "loop",
+          type: "slide",
+          rewind: true,
           perPage: 3,
           pagination: false,
           drag: "free",
-          gap: "3rem",
+          gap: "2rem",
+          width: "100%",
           breakpoints: {
             1024: {
               perPage: 2,
